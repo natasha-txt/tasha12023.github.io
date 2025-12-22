@@ -117,8 +117,8 @@
             grid-column: span 2;
             grid-row: span 2;
             justify-content: space-between; 
-	    /* --- BACKGROUND IMAGE UPDATE: Reverting to bg.jpg --- */
-            background-image: url('bg.jpg'); /* Path updated to bg.jpg */
+            /* --- BACKGROUND IMAGE UPDATE --- */
+            background-image: url('bg.jpg'); 
             background-size: cover;          
             background-position: center center;
             background-repeat: no-repeat;    
@@ -126,7 +126,6 @@
             
             /* Adjusting text color for better contrast against an image */
             color: var(--color-white);
-	    
         }
         
         .card-profile .card-title {
@@ -181,16 +180,56 @@
             color: var(--color-dark-grey);
         }
         
-        /* Card 4 (Case Study): Medium box (2x1) - Moved to row 2 */
+        /* Card 4 (Case Study): Modified for 2-column internal layout */
         .card-case-study {
             grid-column: 1 / span 2;
             grid-row: 3 / span 1;
         }
         
+        .case-study-layout {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .case-study-text {
+            flex: 2;
+        }
+
+        .case-study-action {
+            flex: 1;
+            text-align: center;
+            border-left: 1px solid var(--color-mid-grey);
+            padding-left: 20px;
+        }
+
         .case-study-title {
             font-size: 1.2em;
             font-weight: 700;
             color: var(--color-accent);
+        }
+
+        /* APP BUTTON STYLING */
+        .btn-app {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: white !important; /* Force white text */
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 115, 230, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-app:hover {
+            background-color: #005bb5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 115, 230, 0.4);
+            color: white !important;
         }
 
         /* Card 5 (Hobby): Small box (1x1) - Row 2, next to Location */
@@ -230,15 +269,26 @@
             }
 
             .bento-grid {
-                /* Stacked vertically on mobile: one column */
                 grid-template-columns: 1fr; 
                 grid-auto-rows: auto; 
             }
 
-            /* Reset all specific grid placements for mobile */
             .card {
                 grid-column: auto !important;
                 grid-row: auto !important;
+            }
+
+            .case-study-layout {
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .case-study-action {
+                border-left: none;
+                border-top: 1px solid var(--color-mid-grey);
+                padding-left: 0;
+                padding-top: 20px;
+                width: 100%;
             }
             
             .card-profile .card-title {
@@ -249,7 +299,6 @@
                 font-size: 1.5em;
             }
             
-            /* Remove transform on hover for mobile to prevent layout shift */
              .card:hover {
                 transform: none;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -308,17 +357,24 @@
             
             <div class="card card-case-study">
                 <div class="card-header">Recent Work / Case Study</div>
-                <h2 class="case-study-title">Inconsistent Crop Yield: Analyzing Uneven Soil Conditions</h2>
-                <p class="card-content" style="margin-top: 10px;">
-                    Initiating a project to map and analyze soil heterogeneity across a small experimental plot. Using pH, moisture, and NPK measurements to identify causes for significant crop performance variations, aiming to recommend precision fertilization strategies.
-                </p>
+                <div class="case-study-layout">
+                    <div class="case-study-text">
+                        <h2 class="case-study-title">Inconsistent Crop Yield: Analyzing Uneven Soil Conditions</h2>
+                        <p class="card-content" style="margin-top: 10px;">
+                            Initiating a project to map and analyze soil heterogeneity. Using pH, moisture, and NPK measurements to identify causes for significant crop performance variations.
+                        </p>
+                    </div>
+                    <div class="case-study-action">
+                        <a href="https://natasha-txt.github.io/focus-timer-apps/app.html" target="_blank" class="btn-app">Try My Focus Timer App</a>
+                    </div>
+                </div>
             </div>
             
             <div class="card card-reflection">
                 <div class="card-header">Personal Reflection</div>
-                <h2 class="card-title">Why Food Tech Matters in Malaysia</h2>
+                <h2 class="card-title">Why Food Tech Matters</h2>
                 <p class="card-content">
-                    Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition across the nation.
+                    Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition.
                 </p>
             </div>
 
@@ -332,5 +388,7 @@
                 </div>
             </div>
 
-        </div> </div> </body>
+        </div> 
+    </div> 
+</body>
 </html>
